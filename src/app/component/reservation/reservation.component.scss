@@ -1,0 +1,409 @@
+
+.container-pricing {
+    width: 363px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.card {
+    background-color: #fff;
+    border-radius: 0px;
+    overflow: hidden;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    padding: 15px;
+}
+
+.header img {
+    width: 80px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 4px;
+    margin-right: 15px;
+}
+
+.header-text {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.dates {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.date-label {
+    font-size: 12px;
+    color: #666;
+}
+
+.date {
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.details {
+    padding: 15px;
+}
+
+.detail-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.detail-item:last-child {
+    margin-bottom: 0;
+}
+
+.detail-icon {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+    background-color: #000;
+    mask-size: contain;
+    mask-repeat: no-repeat;
+    mask-position: center;
+}
+
+.hotel-icon {
+    mask-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 7h-8v7H3V5H1v15h2v-3h18v3h2v-9c0-2.21-1.79-4-4-4zm-6 8H9v-2h4v2zm6 0h-4v-2h4v2z"/></svg>');
+}
+
+.food-icon {
+    mask-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M11 9H9V2H7v7H5V2H3v7c0 2.12 1.66 3.84 3.75 3.97V22h2.5v-9.03C11.34 12.84 13 11.12 13 9V2h-2v7zm5-3v8h2.5v8H21V2c-2.76 0-5 2.24-5 4z"/></svg>');
+}
+
+.ticket-icon {
+    mask-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M22 10V6c0-1.11-.9-2-2-2H4c-1.1 0-1.99.89-1.99 2v4c1.1 0 1.99.9 1.99 2s-.89 2-2 2v4c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2v-4c-1.1 0-2-.9-2-2s.9-2 2-2zm-2-1.46c-1.19.69-2 1.99-2 3.46s.81 2.77 2 3.46V18H4v-2.54c1.19-.69 2-1.99 2-3.46 0-1.48-.8-2.77-1.99-3.46L4 6h16v2.54zM11 15h2v2h-2zm0-4h2v2h-2zm0-4h2v2h-2z"/></svg>');
+}
+
+.detail-text {
+    font-size: 14px;
+}
+
+.price-summary {
+    padding: 15px;
+}
+
+.price-item {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.price-item:last-child {
+    margin-bottom: 0;
+    font-weight: bold;
+}
+
+.price-label {
+    font-size: 14px;
+}
+
+.price-value {
+    font-size: 14px;
+}
+
+.footer {
+    padding: 15px;
+    text-align: center;
+}
+
+.footer-text {
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+.payment-methods {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.payment-icon {
+    width: 40px;
+    height: 25px;
+    object-fit: contain;
+}
+
+.info {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    color: #666;
+    font-size: 14px;
+}
+
+.info-icon {
+    width: 16px;
+    height: 16px;
+    background-color: #007bff;
+    color: white;
+    border-radius: 50%;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 5px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.card-hotel {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.journey {
+    display: flex;
+    flex-direction: column;
+}
+
+.journey-title {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 5px;
+    display: flex;
+    align-items: center;
+}
+
+.checkmark {
+    color: #4CAF50;
+    margin-left: 5px;
+}
+
+.journey-details {
+    color: #666;
+    font-size: 14px;
+}
+
+.to-hotels-btn {
+    background-color: #ffc107;
+    color: black;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.to-hotels-btn:hover {
+    background-color: #ffca2c;
+}
+
+
+
+
+h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+h2 {
+    font-size: 18px;
+    font-weight: normal;
+    margin-bottom: 10px;
+}
+.traveler-type {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 20px;
+}
+.form-group {
+    margin-bottom: 20px;
+}
+label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+.sublabel {
+    font-size: 12px;
+    color: #666;
+    margin-bottom: 5px;
+}
+input[type="text"], select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+select {
+    appearance: none;
+    background-image: url('data:image/svg+xml;utf8,<svg fill="%23333" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/><path d="M0 0h24v24H0z" fill="none"/></svg>');
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+}
+.date-inputs {
+    display: flex;
+    gap: 10px;
+}
+.date-inputs input {
+    width: calc(12.33% - 7px);
+}
+
+
+.subtitle {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 10px;
+}
+.phone-input {
+    display: flex;
+    margin-bottom: 20px;
+}
+.country-code {
+    width: 90px;
+    margin-right: 10px;
+}
+.phone-number {
+    flex-grow: 1;
+}
+select, input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+}
+.payment-options {
+    border: 1px solid #ccc;
+    overflow: hidden;
+    background-color: #ffffff;
+    cursor: pointer;
+}
+.payment-option {
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    border-bottom: 1px solid #ccc;
+    cursor: pointer;
+}
+.payment-option:last-child {
+    border-bottom: none;
+}
+.payment-option.selected {
+    border: 1px solid #e5e5e6;
+    background-color: #3c87ff16;
+    background-image: linear-gradient(to bottom, #ffffff, #ffffff);
+    background-blend-mode: multiply;
+    border-color: #3c87ff;
+}
+.payment-option input[type="radio"] {
+    margin-right: 15px;
+}
+.payment-option img {
+    width: 40px;
+    height: 40px;
+    margin-right: 15px;
+    object-fit: contain;
+}
+.redeem-voucher {
+    margin-top: 20px;
+    color: #0066cc;
+    cursor: pointer;
+}
+.redeem-voucher::after {
+    content: "\25BC";
+    margin-left: 5px;
+    font-size: 12px;
+}
+.action-buttons {
+    display: flex;
+    margin-top: 30px;
+    box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
+    background: #ffff;
+    padding: 8px 16px;
+    justify-content: flex-end;
+    gap: 10px;
+}
+.contact-details, .pay-now {
+    padding: 10px;
+    text-align: center;
+    font-weight: bold;
+}
+.contact-details {
+    background-color: white;
+    color: #333;
+    flex-grow: 1;
+}
+.pay-now {
+    background-color: #feb524;
+    color: #333;
+    width:240px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.journey {
+    display: flex;
+    flex-direction: column;
+}
+.journey-title {
+    font-size: 16px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    margin-bottom: 0px;
+    justify-content: flex-end;
+}
+.checkmark {
+    color: #4CAF50;
+    margin-left: 5px;
+}
+.journey-details {
+    color: #666;
+    font-size: 12px;
+    font-family: sans-serif;
+}
+
+.modal {
+    display: block; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  }
+  
+  /* Modal Content */
+  .modal-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+  }
+  
+  /* The Close Button */
+  .close {
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+  
+  .close:hover,
+  .close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+  }

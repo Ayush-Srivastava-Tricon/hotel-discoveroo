@@ -1,0 +1,182 @@
+<div class="container-fluid custom-bg">
+
+  <div class="container">
+    <div class="row mx-auto pt-4 ms-5">
+      <div class="col-1"></div>
+      <div class="col-sm-6">
+        <h3 class="fw-bold">Start booking</h3>
+        <div class="row mt-5">
+          <div class="col-sm-12">
+            <h6>Travel companions</h6>
+            <div class="selector mt-1" id="roomSelector" (click)="showRoomModal=true;">
+              <span class="selector-text">{{totalRoomAdultChild.adult}} adult • {{totalRoomAdultChild.children}}
+                children •
+                {{totalRoomAdultChild.room}} room</span>
+              <svg class="edit-icon" viewBox="0 0 24 24">
+                <path
+                  d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z" />
+              </svg>
+            </div>
+          </div>
+        </div>
+        <div class="row my-3">
+          <div class="col-sm-5">
+            <div class="date-selection d-flex">
+              <div class="form-group">
+                <h6 for="checkin">Check In</h6>
+                <input type="date" class="form-control p-2" [min]="todayDate" id="checkin" [(ngModel)]="checkIn">
+              </div>
+              <div class="form-group mx-2">
+                <h6 for="checkout">Check Out</h6>
+                <input type="date" class="form-control p-2" [min]="checkIn" id="checkout" [(ngModel)]="checkOut">
+              </div>
+              <div class="form-group mx-2">
+                <h6 for="checkout"> <br> </h6>
+                <button type="button" class="btn btn-primary d-flex align-items-center" style="gap: 5px;" (click)="searchRoom()">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                    class="bi bi-search" viewBox="0 0 16 16">
+                    <path
+                      d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0">
+                    </path>
+                  </svg>
+                  Search
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="d-flex justify-content-between mb-2" style="width: 560px;">
+              <h6>Departure date</h6>
+              <!-- <span class="show-lowest-price text-decoration-none fw-bold ">Show lowest price</span> -->
+            </div>
+            <div class="container-fluid p-0 ">
+              <div id="calender-wrapper">
+                <div id="calender-title" class="disable-select flex row center-v around mb-2">
+                  <div id="left" class="flex row center-vh" (click)="previousMonth()"><span>&lt;</span></div>
+                  <p class="flex row center-vh">{{ monthNames[currentMonth].toUpperCase()}} {{2024}}</p>
+                  <div id="right" class="flex row center-vh" (click)="nextMonth()"><span>&gt;</span></div>
+                </div>
+                <div id="days" class="flex row center-vh colorRed disable-select mx-1">
+                  <p *ngFor="let day of dayNames">{{ day }}</p>
+                </div>
+                <div id="calender-content" class="flex row wrap disable-select ms-2">
+                  <div *ngFor="let day of calendarDays" class="month">
+                    <div *ngIf="day.date !== 0" [class]="day.class" [class.disabled]="day.isDatePassed"
+                      (click)="monthClick(day.date)" class="calendar-cell">
+                      <span class="date">{{ day.date }}</span>
+                      <!-- <span class="price">$199</span> -->
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row my-2">
+                <div class="col-sm-12">
+                  <button class="btn btn-outline-danger" (click)="clearCalendar()">Clear Selection</button>
+                </div>
+              </div>
+
+            </div>
+            <div class="info">
+              <span class="info-icon">i</span>
+              Calculated per person and based on a travel group of {{totalRoomAdultChild.adult  }} adults
+            </div>
+            <div class="my-2 mb-5">
+
+              <div class="card-hotel">
+                <div class="journey">
+                  <div class="journey-title">
+                    Your journey
+                    <span class="checkmark">✓</span>
+                  </div>
+                  <div class="journey-details">
+                    {{checkIn|date : 'dd MMM'}} - {{checkOut|date : 'dd MMM'}} ({{diffBetweenDays+1}} days) •
+                    {{totalRoomAdultChild.adult+totalRoomAdultChild.children}} travelers • {{totalRoomAdultChild.room}}
+                    room
+                  </div>
+                </div>
+                <button class="to-hotels-btn" (click)="emitToParent()">
+                  To rooms
+                  <ng-container *ngIf="loader">
+                    <div class="spinner-border spinner-border-sm text-primary">
+                        <span></span>
+                    </div>
+                </ng-container>
+                </button>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-5">
+        <app-side-pricing-info
+          [roomConfig]="{checkIn:checkIn,checkOut:checkOut,days:diffBetweenDays,adult:totalRoomAdultChild.adult,child:totalRoomAdultChild.children}"></app-side-pricing-info>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<div class="modal" *ngIf="showRoomModal">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2>Travel companions</h2>
+        <button type="button" class="close btn btn-sm btn-dark" (click)="showRoomModal=false;">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" [class.overflow]="roomModalConfig.length>1">
+        <ng-container *ngFor="let config of roomModalConfig; let idx = index">
+          <div class="room-header d-flex justify-content-between">
+            Room {{idx+1}}/{{roomModalConfig.length}} <button *ngIf="roomModalConfig.length>1" type="button"
+              class="btn btn-outline-danger btn-sm" (click)="deleteExtraRoom(idx)"> <svg
+                xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash3"
+                viewBox="0 0 16 16">
+                <path
+                  d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5M11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47M8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5" />
+              </svg> </button></div>
+          <div class="guest-type">
+            <div class="guest-info">
+              <div>Adult(s)</div>
+              <div class="guest-age">From 18 years or older</div>
+            </div>
+            <div class="counter">
+              <button (click)="updateGuests('adults', -1,config)">-</button>
+              <span id="adults-count">{{config.adult}}</span>
+              <button (click)="updateGuests('adults', 1,config)">+</button>
+            </div>
+          </div>
+          <div class="guest-type">
+            <div class="guest-info">
+              <div>Children</div>
+              <div class="guest-age">Date of birth required</div>
+            </div>
+            <div class="counter">
+              <button (click)="updateGuests('children', -1,config)">-</button>
+              <span id="children-count">{{config.children}}</span>
+              <button (click)="updateGuests('children', 1,config)">+</button>
+            </div>
+          </div>
+          <hr>
+        </ng-container>
+
+        <div class="add-room" (click)="addMoreRoomConfig()">+ Add a room</div>
+        <div class="summary">
+          <span id="summary">{{totalRoomAdultChild.adult}} adult • {{totalRoomAdultChild.children}} children •
+            {{totalRoomAdultChild.room}} room</span>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <div class="actions">
+          <button class="btn btn-outline-dark" (click)="showRoomModal=false;">Cancel</button>
+          <button class="apply" (click)="showRoomModal=false;getConfigValue()">Apply</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal-backdrop  fade show" *ngIf="showRoomModal"></div>

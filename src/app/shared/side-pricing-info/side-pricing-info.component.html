@@ -1,0 +1,68 @@
+<div class="container-pricing ms-5">
+    <div class="card">
+      <div class="header">
+        <img
+          src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-unZfxhXY5v4biHm4gsSt7hepiYgJj1.png"
+          alt="Paris Disneyland">
+        <div class="header-text">City trip Paris with ticket for 1 day in Disneyland® Paris</div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="dates">
+        <div>
+          <div class="date-label">To</div>
+          <div class="date">{{roomConfig?.checkIn ? (roomConfig?.checkIn|date : 'EEE dd MMM yyyy ') : '-'}}</div>
+        </div>
+        <div>
+          <div class="date-label">Back</div>
+          <div class="date">{{roomConfig?.checkOut ? (roomConfig?.checkOut|date : 'EEE dd MMM yyyy') : '-'}}</div>
+        </div>
+      </div>
+      <div class="details">
+        <div class="detail-item">
+          <div class="detail-icon hotel-icon"></div>
+          <div class="detail-text">{{roomConfig?.days}} nights : {{roomConfig?.hotelName}}...</div>
+        </div>
+        <!-- <div class="detail-item">
+          <div class="detail-icon food-icon"></div>
+          <div class="detail-text">{{roomConfig.breakfast}}</div>
+        </div> -->
+        <div class="detail-item">
+          <div class="detail-icon ticket-icon"></div>
+          <div class="detail-text">{{hotelDetail?.[0]?.address}}</div>
+        </div>
+      </div>
+      <div class="price-summary">
+        <div class="price-item">
+          <span class="price-label">{{roomConfig?.days+1}} days • {{roomConfig?.adult+roomConfig?.child}} traveler • {{roomConfig?.totalRoom}} room ⓘ</span>
+          <span class="price-value">${{roomConfig?.totalPrice}}</span>
+        </div>
+        <div class="price-item">
+          <span class="price-label">Discount offer</span>
+          <span class="price-value">{{roomConfig?.discount ?  roomConfig?.discount: '-'}}</span>
+        </div>
+        <div class="price-item">
+          <span class="price-label">Reservation costs</span>
+          <span class="price-value">{{roomConfig?.reservationCost ?  roomConfig?.reservationCost: '-'}}</span>
+        </div>
+        <div class="price-item">
+          <span class="price-label">Total</span>
+          <span class="price-value">${{roomConfig?.totalPrice}}</span>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="footer">
+        <div class="footer-text">Book with guarantee and pay safely</div>
+        <div class="payment-methods">
+          <img src="../../../assets/image/sgr.3640c5e0.png" alt="ANVR" class="payment-icon">
+          <img src="../../../assets/image/anvr.2ca85161.png" alt="SGR" class="payment-icon">
+          <img src="../../../assets/image/calamiteitenfonds.48ea6026.png" alt="Thuiswinkel" class="payment-icon">
+          <img src="../../../assets/image/ideal.4f66e13b.png" alt="iDEAL" class="payment-icon">
+          <img src="../../../assets/image/bancontact.683e7a1e.png" alt="Bancontact" class="payment-icon">
+          <img src="../../../assets/image/mastercard.38bff2eb.png" alt="Mastercard" class="payment-icon">
+          <img src="../../../assets/image/visa.f5c7fb62.png" alt="Visa" class="payment-icon">
+        </div>
+      </div>
+    </div>
+  </div>

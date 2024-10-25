@@ -1,0 +1,90 @@
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #f8f9fa;
+}
+/* Navbar Styling */
+.navbar {
+    background-color: white;
+    padding: 15px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    position: relative;
+    z-index: 1;
+}
+.navbar-brand {
+    font-weight: bold;
+    font-size: 36px;
+    color: #000;
+    margin-left: 20px;
+}
+.navbar-brand span {
+    color: #007bff;
+}
+
+/* Steps Styling */
+.steps-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 20px 0;
+}
+.steps-container .step {
+    display: flex;
+    align-items: center;
+    margin-right: 30px;
+    cursor: pointer;
+
+    &.disabled{
+        pointer-events: none;
+    }
+}
+.steps-container .step:last-child {
+    margin-right: 0;
+}
+.steps-container .step span {
+    display: inline-block;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    background-color: #ddd;
+    color: #666;
+    text-align: center;
+    line-height: 35px;
+    font-weight: bold;
+    margin-right: 10px;
+    transition: background-color 0.3s, color 0.3s;
+}
+.steps-container .step .step-label {
+    font-weight: bold;
+    color: #aaa;
+    font-size: 14px;
+}
+.steps-container .step.completed span, .steps-container .step.active span {
+    background-color: #007bff;
+    color: white;
+}
+.steps-container .step.completed .step-label, .steps-container .step.active .step-label {
+    color: black;
+}
+.steps-container .step-separator {
+    width: 40px;
+    height: 3px;
+    background-color: #ddd;
+    transition: background-color 0.3s;
+}
+.steps-container .step-separator.completed {
+    background-color: #007bff;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .steps-container {
+        flex-direction: column;
+        text-align: center;
+    }
+    .steps-container .step {
+        margin-bottom: 15px;
+    }
+    .steps-container .step-separator {
+        display: none;
+    }
+}

@@ -1,0 +1,66 @@
+<div class="container-fluid custom-bg">
+    <div class="container">
+        <div class="row mx-auto ms-5 pt-4">
+            <div class="col-sm-1"></div>
+            <div class="col-sm-6">
+                <ng-container *ngIf="hotels?.length>0">
+                    <h3 class="fw-bold mb-3">Choose your room</h3>
+                    <!-- <div class="map-container">
+                    <button class="map-button">Card 🗺️</button>
+                </div> -->
+                    <div class="fs-3 fw-bold text-primary bg-white py-2 px-4 shadow rounded">
+                        {{hotels[0].property_name|titlecase}} <span class="hotel-stars">⭐⭐⭐</span>
+                        <div class="fs-6 fw-bold text-dark bg-white">({{hotels[0].address|titlecase}})</div>
+                    </div>
+
+                    <div class="hotel-list" *ngFor="let item of dataRooms;let didx = index;">
+                        <div class="mb-1"> <strong>Adult</strong> : {{item.no_of_adults}}, <strong>Child</strong>:
+                            {{item.no_of_childs}}</div>
+                        <ng-container *ngFor="let parentRoomItem of item.rooms;let pidx = index;">
+                            <ng-container *ngIf="parentRoomItem.rooms.length>0">
+                                <div class="parent-room-name mb-1"> <strong>Room Type</strong> :
+                                    {{parentRoomItem.parentRoom}}</div>
+                                <div class="hotel-item" [class.selected]="room.selected" (click)="selectHotel(item,didx,pidx,ridx)"
+                                    *ngFor="let room of parentRoomItem.rooms ; let ridx = index">
+                                    <img src="../../../assets/image/hi.webp" alt="Belta Hotel" class="hotel-image">
+                                    <div class="hotel-info" [class.selected]="room.selected">
+                                        <h2 class="hotel-name">{{room.room_name}} <span class="hotel-stars">⭐⭐⭐</span>
+                                        </h2>
+                                        <p>{{room.breakfast}}, {{room.nonrefundable == '0' ? 'Non-Refundable' :
+                                            'Refundable'}}
+                                        </p>
+                                        <div class="fw-bold fs-5 ">+ € {{room.default_price}},-</div>
+                                    </div>
+                                </div>
+                            </ng-container>
+                            <ng-container *ngIf="parentRoomItem.rooms.length == 0">
+                                <h4>No rooms</h4>
+                            </ng-container>
+                        </ng-container>
+
+                    </div>
+                    <div class="action-buttons mb-4 rounded">
+                        <div class="journey">
+                            <div class="journey-title"> Your Hotel </div>
+                            <div class="journey-details"> {{hotels[0].property_name|titlecase}} </div>
+                        </div>
+                        <div class="pay-now" (click)="onNext()">To reservation</div>
+                    </div>
+                </ng-container>
+                <ng-container *ngIf="loader">
+                    <div class="spinner-border text-primary">
+                        <span></span>
+                    </div>
+                </ng-container>
+                <ng-container *ngIf="!loader && !hotels">
+                    <div class="display-6 fw-bold">No rooms found</div>
+                </ng-container>
+            </div>
+
+            <div class="col-sm-5 d-flex ">
+                <app-side-pricing-info></app-side-pricing-info>
+            </div>
+        </div>
+    </div>
+
+</div>

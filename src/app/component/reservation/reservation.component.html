@@ -1,0 +1,137 @@
+<div class="container-fluid custom-bg">
+  <div class="container">
+    <div class="row mx-auto ms-5 pt-4">
+      <div class="col-sm-1"></div>
+      <div class="col-sm-6">
+        <div class="container" *ngIf="guestDetail?.length>0">
+          <h3 class="fw-bold mb-5">Enter booking details</h3>
+          <div class="traveler-section" *ngFor="let guest of guestDetail;let idx = index;">
+            <h2 class="fw-bold">Traveler details Person {{idx+1}} of {{guestDetail?.length}} </h2>
+            <div class="section bg-white shadow rounded p-3 mb-3">
+              <div class="d-flex justify-content-between align-items-center mb-2 text-primary">
+                <!-- <b>{{guest.roomDetail?.room_name}}</b> -->
+                <!-- <span class="my-1 fw-bold">Guest {{gidx+1}} of {{guest?.guestDetail?.length}}</span> -->
+              </div>
+              <div class="form-group">
+                <label for="name1" id="name">Name</label>
+                <div class="sublabel">First name (first name according to passport)</div>
+                <input type="text" id="name1" name="name1" [(ngModel)]="guest.first_name"
+                  >
+              </div>
+              <div class="form-group">
+                <label for="surname1">LastName</label>
+                <div class="sublabel">Surname (according to passport)</div>
+                <input type="text" id="surname1" name="surname1" [(ngModel)]="guest.last_name">
+              </div>
+              <div class="form-group">
+                <label for="email">Email</label>
+                <div class="sublabel">Booking information will be sent you over this email</div>
+                <input type="text" id="surname1" name="surname1" [(ngModel)]="guest.email">
+              </div>
+              <div class="form-group">
+                <label for="lang">Language</label>
+                <select id="lang" [(ngModel)]="guest.language">
+                  <option value="" selected="true" hidden="true">Select Language</option>
+                  <option value="english">English</option>
+                  <option value="spanish">Spanish</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="lang">Travel Agency</label>
+                <select id="lang" [(ngModel)]="guest.travel_agency">
+                  <option value="" selected="true" hidden="true">Select Travel Agency...</option>
+                  <option value="corporate">Corporate</option>
+                  <option value="travel">Travel</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label>Phone Number</label>
+                <input type="number" [(ngModel)]="guest.mobile" 
+                  class="form-control" placeholder="XXXXXXX">
+              </div>
+              <hr>
+            </div>
+          </div>
+
+          <div class="payment-form">
+
+            <label>Pay</label>
+            <p class="subtitle">Choose your payment method</p>
+            <div class="payment-options">
+              <label class="payment-option">
+                <input type="radio" name="paymentMode" value="ideal" [(ngModel)]="paymentMode">
+                <img src="../../../assets/image/ideal.svg" alt="iDEAL">
+                <span>iDEAL</span>
+              </label>
+              <label class="payment-option">
+                <input type="radio" name="paymentMode" value="cc" [(ngModel)]="paymentMode">
+                <img src="../../../assets/image/creditcard.svg" alt="Credit card">
+                <span>Credit card</span>
+              </label>
+              <label class="payment-option">
+                <input type="radio" name="paymentMode" value="paypal" [(ngModel)]="paymentMode">
+                <img src="../../../assets/image/paypal.svg" alt="PayPal">
+                <span>PayPal</span>
+              </label>
+              <label class="payment-option">
+                <input type="radio" name="paymentMode" value="bancontact" [(ngModel)]="paymentMode">
+                <img src="../../../assets/image/bancontact.svg" alt="Bancontact">
+                <span>Bancontact</span>
+              </label>
+              <label class="payment-option">
+                <input type="radio" name="paymentMode" value="kbc/cbc" [(ngModel)]="paymentMode">
+                <img src="../../../assets/image/kbc.svg" alt="KBC/CBC Payment Button">
+                <span>KBC/CBC Payment Button</span>
+              </label>
+              <label class="payment-option">
+                <input type="radio" name="paymentMode" value="payAtHotel" [(ngModel)]="paymentMode">
+                <img src="../../../assets/image/kbc.svg" alt="Pay at Hotel">
+                <span>Pay at hotel</span>
+              </label>
+            </div>
+
+            <!-- <div class="redeem-voucher">
+              Redeem a gift card or discount voucher
+            </div> -->
+
+            <div class="action-buttons mb-4">
+              <div class="journey">
+                <div class="journey-title">
+                  Contact details
+                </div>
+                <div class="journey-details">
+                  Fill in all required contact details
+                </div>
+              </div>
+              <div class="pay-now d-flex align-items-center justify-content-center" (click)="onSubmit()">
+                <div>Pay now</div>
+                <div *ngIf="loader" class="spinner-border spinner-border-sm mx-2 text-primary text-sm"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-5 d-flex ">
+        <app-side-pricing-info></app-side-pricing-info>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="modal" *ngIf="showModal">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content p-0">
+      <div class="modal-header bg-primary text-white">
+        <h2>Thank you</h2>
+        <button type="button" class="btn btn-sm btn-light " (click)="closeModal()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="text-center">
+          <div>Your Reservation Number</div>
+          <div class="fw-bold fs-6 text-success my-3"> {{reservationNumber}}</div>
+          <p class="text-center">Thank you for your reservation. We will contact you soon.</p>
+        </div>
+      </div>
