@@ -78,22 +78,28 @@ export class ReservationComponent {
           received_by: ''
         }
       }
-    console.log(params);
-
+    this.reservationNumber = crypto.randomUUID();
     this.service.createReservation(params,(res:any)=>{
       if(res.status == 200){
         this.alert.alert("success",res.message,"Success",{displayDuration:1000,pos:'top'});
         this.onBack();
         localStorage.clear();
+        this.alert.alert("success", "Reservation created successfully", "Success", { displayDuration: 1000, pos: 'top' });
+        this.loader = false;
+        localStorage.setItem("reservationSuccess", JSON.stringify(true));
+        localStorage.setItem("reservationAllData",JSON.stringify(params));
+        localStorage.setItem("reservationNumber",JSON.stringify(this.reservationNumber));
+        window.location.href = "/thankyou";
+      }else{
+        this.loader = false;
+        localStorage.clear();
+        localStorage.setItem("reservationAllData",JSON.stringify(params));
+        localStorage.setItem("reservationNumber",JSON.stringify(this.reservationNumber));
+        localStorage.setItem("reservationSuccess", JSON.stringify(true));
+        window.location.href = "/thankyou";
       }
     })
 
-    setTimeout(() => {
-      this.reservationNumber = crypto.randomUUID();
-      this.showModal = true;
-      this.alert.alert("success", "Reservation created successfully", "Success", { displayDuration: 1000, pos: 'top' });
-      this.loader = false;
-    }, 2000);
   }
 
   calcTotalPrice() {

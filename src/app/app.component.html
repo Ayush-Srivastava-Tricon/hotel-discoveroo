@@ -1,42 +1,35 @@
-<!-- <router-outlet></router-outlet> -->
-<!-- <div class="container">
-  <h1>Discoveroo</h1>
-  <div class="steps">
-    <span [class.active]="currentStep === 1">1 Date</span>
-    <span [class.active]="currentStep === 2">2 Hotels</span>
-    <span [class.active]="currentStep === 3">3 Reservation</span>
-  </div>
-  <app-date-selection *ngIf="currentStep === 1" (next)="nextStep()"></app-date-selection>
-  <app-hotel-selection *ngIf="currentStep === 2" (next)="nextStep()" (back)="previousStep()"></app-hotel-selection>
-  <app-reservation *ngIf="currentStep === 3" (back)="previousStep()"></app-reservation>
-</div> -->
 
-
-<nav class="navbar navbar-expand-lg navbar-light">
-  <header class="d-flex m-auto">
-    <a class="navbar-brand" href="#">Discoveroo</a>
-    <div class="steps-container">
-      <div class="step active" data-step="1" (click)="setActiveStep(1)">
-        <span><i class="bi bi-check-circle"></i> 1</span>
-        <div class="step-label">Date</div>
+<ng-container *ngIf="!isReservationSuccess">
+  <nav class="navbar navbar-expand-lg navbar-light">
+    <header class="d-flex m-auto">
+      <a class="navbar-brand" href="#">Discoveroo</a>
+      <div class="steps-container">
+        <div class="step active" data-step="1" (click)="setActiveStep(1)">
+          <span><i class="bi bi-check-circle"></i> 1</span>
+          <div class="step-label">Date</div>
+        </div>
+        <div class="step-separator" id="separator-1"></div>
+        <div class="step" [class.disabled]="!hasBookingConfig" data-step="2" (click)="setActiveStep(2)">
+          <span>2</span>
+          <div class="step-label">Rooms</div>
+        </div>
+        <div class="step-separator" id="separator-2"></div>
+        <div class="step" [class.disabled]="!hasReservationConfig" data-step="3" (click)="setActiveStep(3)">
+          <span>3</span>
+          <div class="step-label">Reservation</div>
+        </div>
       </div>
-      <div class="step-separator" id="separator-1"></div>
-      <div class="step" [class.disabled]="!hasBookingConfig" data-step="2"  (click)="setActiveStep(2)">
-        <span>2</span>
-        <div class="step-label">Rooms</div>
-      </div>
-      <div class="step-separator" id="separator-2"></div>
-      <div class="step" [class.disabled]="!hasReservationConfig" data-step="3" (click)="setActiveStep(3)">
-        <span>3</span>
-        <div class="step-label">Reservation</div>
-      </div>
+    </header>
+    <div class="ask-a-question m-auto">
+      <button class="btn btn-outline-primary">Ask a question</button>
     </div>
-  </header>
-  <div class="ask-a-question m-auto">
-    <button class="btn btn-outline-primary">Ask a question</button>
-  </div>
-</nav>
+  </nav>
+  <app-date-selection *ngIf="currentStep === 1" (next)="nextStep($event)"></app-date-selection>
+  <app-hotel-selection *ngIf="currentStep === 2" (next)="nextStep($event)"
+  (back)="previousStep($event)"></app-hotel-selection>
+  <app-reservation *ngIf="currentStep === 3" (back)="previousStep($event)"></app-reservation>
+</ng-container>
 
-<app-date-selection *ngIf="currentStep === 1" (next)="nextStep($event)"></app-date-selection>
-<app-hotel-selection *ngIf="currentStep === 2" (next)="nextStep($event)" (back)="previousStep($event)"></app-hotel-selection>
-<app-reservation *ngIf="currentStep === 3" (back)="previousStep($event)"></app-reservation>
+<ng-container *ngIf="isReservationSuccess">
+  <router-outlet></router-outlet>
+</ng-container>

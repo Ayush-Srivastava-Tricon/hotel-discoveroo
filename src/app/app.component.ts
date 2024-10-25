@@ -10,10 +10,12 @@ export class AppComponent {
   currentStep = 1;
   hasBookingConfig:boolean=false;
   hasReservationConfig:boolean=false;
+  isReservationSuccess:boolean=false;
 
   constructor(){}
 
   ngOnInit(){
+    this.isReservationSuccess = JSON.parse(<any>localStorage.getItem("reservationSuccess")) ? true : false;
     if(!localStorage.getItem("currentStep")){
       this.updateCurrentStepIntoLocal()
         this.setActiveStep(this.currentStep);
@@ -25,6 +27,7 @@ export class AppComponent {
     this.hasBookingConfig = JSON.parse(<any>localStorage.getItem("bookingConfig")) ? true : false;
     this.hasReservationConfig = JSON.parse(<any> localStorage.getItem("reservationConfig")) ? true : false;
     console.log(this.hasBookingConfig,this.hasReservationConfig);
+    
   }
 
   updateCurrentStepIntoLocal(){

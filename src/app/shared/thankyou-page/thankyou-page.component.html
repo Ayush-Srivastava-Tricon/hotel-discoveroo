@@ -1,0 +1,41 @@
+<div class=content>
+    <div class="wrapper-1">
+      <div class="wrapper-2">
+        <h1>Thank you !</h1>
+        <p>Your Reservation Number : {{reservationNumber}}  </p>
+        <p>you should receive a confirmation email soon ! </p>
+
+        <div class="container-fluid">
+            <div class="row mb-3">
+                <div class="col-sm-12">
+                    <div class="d-flex justify-content-around">
+                        <div class="fs-4">Check In :- {{reservationData.reservationData.check_in|date : 'EEE dd MMM'}},</div>
+                        <div class="fs-4">Check Out : {{reservationData.reservationData.check_out|date : 'EEE dd MMM'}}</div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12 text-start" *ngFor="let guest of reservationData.guestData ;let idx = index">
+                    <div>Traveller : {{idx+1}} / {{reservationData.guestData.length}}</div>
+                   <div><strong>Guest name </strong> : {{guest.first_name}} {{guest.last_name}}</div> 
+                   <div>
+                       <strong>Guest email </strong> : {{guest.email}} 
+                   </div>
+                   <div>
+                       <strong>Guest Number </strong> : {{guest.mobile}} 
+                   </div>
+                   <hr>
+            </div>
+        </div>
+
+        <a class="btn btn-sm btn-danger go-home" (click)="goHome()">
+        go home
+        </a>
+      </div>
+     
+  </div>
+  </div>
+  
+  
+  
+  <link href="https://fonts.googleapis.com/css?family=Kaushan+Script|Source+Sans+Pro" rel="stylesheet">
