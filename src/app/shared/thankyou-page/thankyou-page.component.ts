@@ -8,23 +8,22 @@ import { Router } from '@angular/router';
 })
 export class ThankyouPageComponent {
 
-  reservationData:any= {};
-  reservationNumber:any='';
+  reservationData: any = {};
+  reservationNumber: any = '';
 
-  constructor(private router:Router){
+  constructor(private router: Router) {
 
   }
 
   ngOnInit() {
     this.reservationData = JSON.parse(<any>localStorage.getItem("reservationAllData"));
     this.reservationNumber = JSON.parse(<any>localStorage.getItem("reservationNumber"));
-}
+  }
 
-goHome(){
-      localStorage.clear()
-      location.reload();
-      this.router.navigate(['/']);
-}
+  goHome() {
+    localStorage.clear()
+    window.location.href= "/";
+  }
 
 }
 

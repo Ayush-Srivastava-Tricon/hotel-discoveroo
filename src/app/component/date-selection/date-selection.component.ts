@@ -285,7 +285,7 @@ export class DateSelectionComponent {
         this.loader=false;
         this.alert.alert("success",res.message,"Success",{displayDuration:1000,pos:'top'});
         localStorage.setItem("hotels", JSON.stringify(res.responseData.property_data));
-        localStorage.setItem("rooms", JSON.stringify(res.responseData.responseData));
+        localStorage.setItem("rooms", JSON.stringify(res.responseData.displayData));
         this.next.emit(2);
         
       }else{

@@ -10,7 +10,8 @@ export class SidePricingInfoComponent {
   @Input() roomConfig:any={};
 
   hotelDetail:any={};
-
+  baseImgUrl:any =  window.location.origin;
+  isLocal:boolean=false;
   constructor(){
     
 /*************  ✨ Codeium Command ⭐  *************/
@@ -23,6 +24,11 @@ export class SidePricingInfoComponent {
   ngOnInit(){
     this.roomConfig = JSON.parse(<any>localStorage.getItem("bookingConfig"));
     this.hotelDetail = JSON.parse(<any>localStorage.getItem("hotels"));
+    this.setBaseImgUrlPath();
+  }
+
+  setBaseImgUrlPath(){
+    this.isLocal = window.location.origin.includes("localhost") ? true : false;
   }
 
 }

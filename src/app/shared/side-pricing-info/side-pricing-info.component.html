@@ -55,13 +55,13 @@
       <div class="footer">
         <div class="footer-text">Book with guarantee and pay safely</div>
         <div class="payment-methods">
-          <img src="../../../assets/image/sgr.3640c5e0.png" alt="ANVR" class="payment-icon">
-          <img src="../../../assets/image/anvr.2ca85161.png" alt="SGR" class="payment-icon">
-          <img src="../../../assets/image/calamiteitenfonds.48ea6026.png" alt="Thuiswinkel" class="payment-icon">
-          <img src="../../../assets/image/ideal.4f66e13b.png" alt="iDEAL" class="payment-icon">
-          <img src="../../../assets/image/bancontact.683e7a1e.png" alt="Bancontact" class="payment-icon">
-          <img src="../../../assets/image/mastercard.38bff2eb.png" alt="Mastercard" class="payment-icon">
-          <img src="../../../assets/image/visa.f5c7fb62.png" alt="Visa" class="payment-icon">
+          <img [src]="isLocal ? baseImgUrl+'/assets/image/sgr.3640c5e0.png' : baseImgUrl+'/hotel-discoveroo'+'/assets/image/sgr.3640c5e0.png'" alt="ANVR" class="payment-icon">
+          <img [src]="isLocal ? baseImgUrl+'/assets/image/anvr.2ca85161.png' : baseImgUrl+'/hotel-discoveroo'+'/assets/image/anvr.2ca85161.png'" alt="SGR" class="payment-icon">
+          <img [src]="isLocal ? baseImgUrl+'/assets/image/calamiteitenfonds.48ea6026.png' : baseImgUrl+'/hotel-discoveroo'+'/assets/image/calamiteitenfonds.48ea6026.png'" alt="Thuiswinkel" class="payment-icon">
+          <img [src]="isLocal ? baseImgUrl+'/assets/image/ideal.4f66e13b.png' : baseImgUrl+'/hotel-discoveroo'+'/assets/image/ideal.4f66e13b.png'" alt="iDEAL" class="payment-icon">
+          <img [src]="isLocal ? baseImgUrl+'/assets/image/bancontact.683e7a1e.png' : baseImgUrl+'/hotel-discoveroo'+'/assets/image/bancontact.683e7a1e.png'" alt="Bancontact" class="payment-icon">
+          <img [src]="isLocal ? baseImgUrl+'/assets/image/mastercard.38bff2eb.png' : baseImgUrl+'/hotel-discoveroo'+'/mastercard.38bff2eb.png'" alt="Mastercard" class="payment-icon">
+          <img [src]="isLocal ? baseImgUrl+'/assets/image/visa.f5c7fb62.png' : baseImgUrl+'/hotel-discoveroo'+'/visa.f5c7fb62.png'" alt="Visa" class="payment-icon">
         </div>
       </div>
     </div>
